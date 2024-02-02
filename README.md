@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# hashnode academy
+This is the demo repo submitted for the [Hashnode API Hackathon](https://hashnode.com/hackathons/apihackathon). It is an AI-powered learning path generator.
 
 ## Getting Started
 
@@ -14,21 +15,26 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Run the python server with `python server.py`
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Watch YouTube demo video](https://youtu.be/b3qKjJiRgiQ)
+- [Read blog post](https://lo-victoria.com/hashnode-academy) 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Next Steps
+- Training a bigger and more accurate model to predict complexity of an article
 
-## Deploy on Vercel
+- Using higher quality articles as datasets for training
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Include parameters to train the model to look for relevancy and quality as well
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Adding filters in UI for users to tweak their learning path
+
+- Allow users to prompt their desired learning topic in more detail
+
+- Include more variety of difficulty levels and specifying prerequisites from other topics
+
+- Improvements to UI/UX of landing page

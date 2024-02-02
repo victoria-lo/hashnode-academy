@@ -3,15 +3,7 @@
 import React, { useState } from 'react';
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa6";
 
-const articles = [
-  { title: 'GraphQL for Beginners: Introduction', link: '#', duration: '8 min read' },
-  { title: 'GraphQL for Beginners: Subscriptions, Schemas and Servers', link: '#', duration: '6 min read' },
-  { title: 'GraphQL for Beginners: Setting Up GraphQL Server', link: '#', duration: '10 min read' },
-  { title: 'GraphQL for Beginners: Build Real-Time Chat App with Apollo Client and React', link: '#', duration: '9 min read' },
-  { title: 'GraphQL for Beginners: Fetch Data from GraphQL APIs with Apollo Client', link: '#', duration: '9 min read' },
-];
-
-const LearningPath = () => {
+const LearningPath = ({articles}) => {
   const [feedback, setFeedback] = useState(null);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
@@ -32,13 +24,13 @@ const LearningPath = () => {
       <ul className="path-container">
         {articles.map((article, index) => (
           <li key={index} className="learning-path-item">
-            <a href={article.link} className="learning-path-link">
+            <a href={article.url} target="_blank" className="learning-path-link">
               <span style={{height:"19px", width:"19px", minHeight:"19px", minWidth:"19px"}}></span>
               <span className="node"></span>
               <span style={{height:"16px", width:"16px", minHeight:"16px", minWidth:"16px"}}></span>
               <div className="article">
                 <div className="article-title">{article.title}</div>
-                <p className="duration-text">{article.duration}</p>
+                <p className="author-text">{article.author}</p>
               </div>
             </a>
           </li>

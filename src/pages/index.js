@@ -2,16 +2,46 @@
 import React, { useState } from 'react';
 import '../../styles/global.css';
 import LearningPath from '@/components/LearningPath';
+import ClipLoader from "react-spinners/ClipLoader";
 
 const IndexPage = () => {
   const [searchText, setSearchText] = useState('');
   const [pathGenerated, setPathGenerated] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [articles, setArticles] = useState([]);
 
   const generateLearningPath = () => {
-    // Implement your logic for generating the learning path
-    // For now, let's just log the selected option
-    setPathGenerated(true);
-    console.log(searchText);
+    
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      setPathGenerated(true);
+    }, 2500);
+
+    // Call the backend API
+    fetch(`/learning-path?tags=${searchText}`)
+      .then(response => response.json())
+      .then(data => {
+        // Extract and sort articles from the learning path
+        const learningPath = data.learning_path;
+        const sortedArticles = [];
+        ["Beginner", "Novice", "Intermediate", "Advanced", "Expert"].forEach(difficulty => {
+          if (learningPath[difficulty]) {
+            const { title, url, author } = learningPath[difficulty].node;
+            sortedArticles.push({ title, url, author: author.name });
+          }
+        });
+
+        // Update the state with the sorted articles
+        setArticles(sortedArticles);
+      })
+      .catch(error => {
+        console.error('Error fetching learning path:', error);
+      }).finally(() => {
+        setLoading(false);
+        setPathGenerated(true);
+      });
   };
 
   return (
@@ -28,7 +58,7 @@ const IndexPage = () => {
         
       </div>
       <div className="header">
-        <h1>Your Go-To Tech Learning Hub<br/>Tranforming how you conquer knowledge</h1>
+        <h1>Your Go-To Tech Learning Hub<br/>Transforming how you conquer knowledge</h1>
       </div>
 
       <div className="input-container">
@@ -42,8 +72,12 @@ const IndexPage = () => {
         </div>
         <button onClick={generateLearningPath}>Generate my learning path!</button>
       </div>
+      <div className="loader">
+        {loading && <><ClipLoader color="#2962ff" size={150} /><p>Fetching articles from hashnode & generating learning path...</p></>}
+      </div>
+      
 
-      {pathGenerated && <LearningPath />}
+      {pathGenerated && !loading && <LearningPath articles={articles} />}
     </div>
   );
 };

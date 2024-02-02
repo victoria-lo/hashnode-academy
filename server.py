@@ -115,6 +115,9 @@ def get_learning_path():
             node {
                 title
                 subtitle
+                content{
+                    makrdown
+                }
                 author{
                     name
                 }
