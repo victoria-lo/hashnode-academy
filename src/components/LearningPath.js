@@ -1,6 +1,7 @@
 // components/LearningPath.js
 
 import React, { useState } from 'react';
+import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa6";
 
 const articles = [
   { title: 'GraphQL for Beginners: Introduction', link: '#', duration: '8 min read' },
@@ -49,9 +50,11 @@ const LearningPath = () => {
       ))}
       </div>
     </div>
+
+    <p style={{color:"#888", fontStyle:"italic"}}>Is the content generated useful?</p>
     <div className="feedback">
-    <span role="img" aria-label="thumbs-up" className={`thumb-icon${feedbackSubmitted ? ' disabled' : ''}`} onClick={() => handleFeedback('👍')}>👍</span>
-        <span role="img" aria-label="thumbs-down" className={`thumb-icon${feedbackSubmitted ? ' disabled' : ''}`} onClick={() => handleFeedback('👎')}>👎</span>
+    <FaRegThumbsUp className={`thumb-icon${feedbackSubmitted ? ' disabled' : ''}`} onClick={() => handleFeedback('1')}/>
+    <FaRegThumbsDown className={`thumb-icon${feedbackSubmitted ? ' disabled' : ''}`} onClick={() => handleFeedback('0')}/> 
     </div>
   </div>
   );

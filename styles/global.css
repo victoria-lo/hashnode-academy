@@ -12,24 +12,58 @@ body {
   .container {
     margin: auto;
     text-align: center;
-    padding: 30px 20px;
+    padding: 10px 20px;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  
-  .header{
+  .navbar{
     display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .navbar a{
+    font-size: 20px;
+  }
+
+  .navbar img{
+    width: 60px;
+    height:60px;
+  }
+
+  .header{
+    margin-top:150px;
+    display:flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
+  .header h1{
+    font-size: 65px;
+    margin-bottom: 10px;
+    line-height: 6rem;
+    font-weight: 500;
+  }
+
   .input-container {
-    margin-top: 20px;
+    margin-top: 150px;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     font-size: large;
   }
-  
+
+  input{
+    padding:15px;
+    border-radius: 10px;
+    font-size: 20px;
+    min-width: 640px;
+    border: none;
+  }
+
   .learning-path {
     max-width: 1080px;
     margin: auto;
@@ -59,6 +93,7 @@ body {
     align-items: start;
     font-size: 20px;
     list-style-type: none;
+    padding:0;
   }
   
   .node {
@@ -76,6 +111,10 @@ body {
     text-align: left;
     justify-content: flex-start;
     align-items: start;
+    border:1px solid #cfcfcf;
+    padding:15px;
+    border-radius: 10px;
+    min-width: 750px;
   }
 
   .article-title {
@@ -103,7 +142,7 @@ body {
     width: 2px;
     transform: translateX(-50%);
     border-radius: 4px;
-    left: 65px;
+    left: 25px;
     height: 44px;
   }
   .connectors .connector:nth-child(1) {
@@ -123,6 +162,7 @@ body {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    color: #888;
   }
   
   .thumb-icon {
@@ -137,23 +177,18 @@ body {
   }
   
   button {
-    margin-top: 10px;
-    padding: 10px;
+    margin-left: 15px;
+    padding: 15px;
     cursor: pointer;
     background-color: #2962ff; /* Hashnode primary color */
     color: #ffffff; /* Hashnode text color on primary background */
     border: none;
-    border-radius: 4px;
-    font-size: large;
+    border-radius: 10px;
+    font-size: 20px;
   }
   
   button:hover {
     background-color: #0039cb; /* Hashnode primary color (hover state) */
-  }
-  
-  .logo {
-    width: 60px;
-    margin-bottom: 20px;
   }
 
   .article-cover img{

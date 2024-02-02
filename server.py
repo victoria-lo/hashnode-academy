@@ -110,20 +110,25 @@ def get_learning_path():
         first: $first,
         after: $after,
         filter: $filter
-      ) {
+    ) {
         edges {
-          node {
-            title
-            content {
-              markdown
+            node {
+                title
+                subtitle
+                author{
+                    name
+                }
+                url
+                coverImage{
+                    url
+                }
             }
-          }
         }
         pageInfo {
-          hasNextPage
-          endCursor
+            hasNextPage
+            endCursor
         }
-      }
+    }
     }
     '''
     # ====================================================================================================
