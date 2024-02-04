@@ -1,9 +1,11 @@
 import requests
 import pickle
 import random
+from flask_cors import CORS
 from flask import Flask, jsonify, request
 
 app = Flask(__name__, static_folder='build', static_url_path='')
+CORS(app)
 
 # Hashnode GraphQL API endpoint
 hashnode_api_url = 'https://gql.hashnode.com'
@@ -115,8 +117,8 @@ def get_learning_path():
             node {
                 title
                 subtitle
-                content{
-                    makrdown
+                content {
+                    markdown
                 }
                 author{
                     name

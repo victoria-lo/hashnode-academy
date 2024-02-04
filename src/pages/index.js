@@ -11,28 +11,22 @@ const IndexPage = () => {
   const [articles, setArticles] = useState([]);
 
   const generateLearningPath = () => {
-    
+
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      setPathGenerated(true);
-    }, 2500);
-
     // Call the backend API
-    fetch(`/learning-path?tags=${searchText}`)
+    fetch(`http://localhost:5000/learning-path?tags=${searchText}`)
       .then(response => response.json())
       .then(data => {
         // Extract and sort articles from the learning path
         const learningPath = data.learning_path;
-        const sortedArticles = [];
+        let sortedArticles = [];
         ["Beginner", "Novice", "Intermediate", "Advanced", "Expert"].forEach(difficulty => {
-          if (learningPath[difficulty]) {
+          if (learningPath[difficulty] !== "Unavailable") {
             const { title, url, author } = learningPath[difficulty].node;
             sortedArticles.push({ title, url, author: author.name });
           }
         });
-
         // Update the state with the sorted articles
         setArticles(sortedArticles);
       })
@@ -47,18 +41,18 @@ const IndexPage = () => {
   return (
     <div className="container">
       <div className="navbar">
-        <div style={{display:"flex"}}>
-        <img src="/hashnode-logo.png" alt="Hashnode Logo" />
-        <h2>hashnode academy</h2>
+        <div style={{ display: "flex" }}>
+          <img src="/hashnode-logo.png" alt="Hashnode Logo" />
+          <h2>hashnode academy</h2>
         </div>
         <div>
-          <a style={{"marginRight":"30px"}}>Blog</a>
+          <a style={{ "marginRight": "30px" }}>Blog</a>
           <a>Features</a>
         </div>
-        
+
       </div>
       <div className="header">
-        <h1>Your Go-To Tech Learning Hub<br/>Transforming how you conquer knowledge</h1>
+        <h1>Your Go-To Tech Learning Hub<br />Transforming how you conquer knowledge</h1>
       </div>
 
       <div className="input-container">
@@ -75,7 +69,7 @@ const IndexPage = () => {
       <div className="loader">
         {loading && <><ClipLoader color="#2962ff" size={150} /><p>Fetching articles from hashnode & generating learning path...</p></>}
       </div>
-      
+
 
       {pathGenerated && !loading && <LearningPath articles={articles} />}
     </div>

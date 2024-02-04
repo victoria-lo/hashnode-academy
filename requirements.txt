@@ -1,0 +1,5 @@
+Flask-Cors==4.0.0
+flask==3.0.1
+requests==2.31.0
+scikit-learn==1.2.2
+sklearn==0.0
